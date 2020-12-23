@@ -33,14 +33,14 @@ public class Level {
         return false;
     }
 
-    boolean park(Vehicle v) {
+    ParkingSpot park(Vehicle v) {
         for (ParkingSpot ps : spots) {
             if (ps.fit(v.getSize())) {
                 ps.park(v);
-                return true;
+                return ps;
             }
         }
-        return false;
+        return null;
     }
 
     boolean leave(Vehicle v) {

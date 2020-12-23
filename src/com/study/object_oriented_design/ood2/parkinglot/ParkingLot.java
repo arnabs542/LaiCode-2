@@ -31,6 +31,7 @@ import com.study.object_oriented_design.ood2.vehicles.Vehicle;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 // since each parking spot and levels has their own physical attributes
@@ -40,6 +41,8 @@ public class ParkingLot {
     // tips: implement code from the class without dependency
     // i.e. write the Vehicle first, and then the ParkingSpot.
     private final List<Level> levels;
+    private HashMap<Vehicle, ParkingSpot> vehicleToSpot = new HashMap<>();
+
 
     public ParkingLot(int numOfLevels, int numOfSpotsPerLevel) {
         List<Level> list = new ArrayList<>(numOfLevels);
@@ -60,7 +63,9 @@ public class ParkingLot {
 
     public boolean park(Vehicle v) {
         for (Level l : levels) {
-            if (l.park(v)) {
+            ParkingSpot ps = l.park(v);
+            if (ps != null) {
+                vehicleToSpot.put(v, ps);
                 return true;
             }
         }
@@ -68,10 +73,11 @@ public class ParkingLot {
     }
 
     public boolean leave(Vehicle v) {
-        for (Level l : levels) {
-            if (l.leave(v)) {
-                return true;
-            }
+        ParkingSpot ps = vehicleToSpot.getOrDefault(v, null);
+        if (ps != null) {
+            vehicleToSpot.remove(v);
+            ps.leave();
+            return true;
         }
         return false;
     }
