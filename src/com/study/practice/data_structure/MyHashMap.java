@@ -129,7 +129,7 @@ public class MyHashMap { // 先不写generics
         Node newNode = new Node(key, value);
         newNode.next = head;
         array[index] = newNode; // 接在头部
-
+        size++;
         if (needRefactor()) {
             rehash();
         }

@@ -20,5 +20,14 @@ public class Tester {
         // Test Min Heap:
         int[] arr = new int[]{5,2,3,7,9,1};
         MinHeap minHeap = new MinHeap(arr);
+
+        // Test HashMap:
+        MyHashMap map = new MyHashMap();
+        for (int i = 0; i < 32; i++) {
+            map.put(Integer.toString(i), i);
+        }
+        int value = map.get("10");
+        int prev = map.put("10", 100);
+        System.out.println("value " + value + " prev " + prev);
     }
 }
