@@ -12,6 +12,18 @@ package com.study.algorithms.class06_heap;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+// maxHeap --> space O(n) time O(n + klogn) heapify + k popping
+// minHeap --> space O(k) time O(k + (n-k)(logk))
+
+// 为何heapify的复杂度是O(n), 是用错位相减法可得。
+// 1. 一共有k层（1 到 k), 第i层有2^(i-1)个节点需要执行percolateDown --> 每个开销是(k-i)
+// 2. 错位相减
+//  cost = (2^0)*(k-1) + (2^1)*(k-2) + ... + (2^k-2)*1   -->  第k-1层不需要进行percolateDown
+//  cost = 2cost-cost = -k+1 + 2 + 2^2 + ... + 2^k-1  --> 然后要等比数列求和 an=a1×q^(n-1)  a1(1-q^n)/(1-q)
+//  a1 = 1, an = 2^k-1, n = k,
+//  cost = -k + 1(1-2^k)/(1-2) = -k + 2^(k) - 1
+// 3. 完全二叉树，所以换元 k = logn, cost = -logn + n - 1 = O(n)
+
 public class KthSmallest {
     static class Cell {
         int row; // from B index

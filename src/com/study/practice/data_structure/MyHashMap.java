@@ -17,17 +17,17 @@ public class MyHashMap { // 先不写generics
     //  因为capacity、load factor可以让用户传，也可以不传用默认，所以设计两个constructor
     //  注意：size 指元素个数
 
-    // Node - stands for key-value pair
+    // Entry - stands for key-value pair
     // storing key and value and next; - separate chaining
 
 
-    // 1. Node nested class
-    public static class Node {
+    // 1. Entry nested class
+    public static class Entry {
         final String key;
         Integer value;
-        Node next;
+        Entry next;
 
-        public Node(String key, Integer value) {
+        public Entry(String key, Integer value) {
             this.key = key;
             this.value = value;
         }
@@ -39,7 +39,7 @@ public class MyHashMap { // 先不写generics
     private final int initCapacity;
     private final float loadFactor;
     private int size;
-    private Node[] array;
+    private Entry[] array;
 
     public MyHashMap() {
         this(DEFAULT_CAPACITY, DEFAULT_LOAD_FACTOR); // call另一个constructor。
@@ -52,7 +52,7 @@ public class MyHashMap { // 先不写generics
         this.initCapacity = initCapacity;           // capacity
         this.loadFactor = loadFactor;     // load factor
         this.size = 0;                      // current elements
-        this.array = new Node[initCapacity];    // buckets
+        this.array = new Entry[initCapacity];    // buckets
     }
 
     // API - 1
@@ -66,7 +66,7 @@ public class MyHashMap { // 先不写generics
     public Integer get(String key) {
 //        int index = key.hashCode() % capacity; // 出错，key可能是null
         int index = hash(key);
-        Node head = array[index];
+        Entry head = array[index];
         while (head != null) {
 //            if (head.key.equals(key)) { // 出错，key可能是null
 //                return head.value;
@@ -114,8 +114,8 @@ public class MyHashMap { // 先不写generics
 
     public Integer put(String key, Integer value) {
         int index = hash(key);
-        Node head = array[index];
-        Node cur = head;
+        Entry head = array[index];
+        Entry cur = head;
         // step1: iterate through, if exists
         while (cur != null) {
             if (equalsKey(cur.key, key)) {
@@ -126,9 +126,9 @@ public class MyHashMap { // 先不写generics
             cur = cur.next;
         }
         // step2: if not exists, add new one, and check load factor
-        Node newNode = new Node(key, value);
-        newNode.next = head;
-        array[index] = newNode; // 接在头部
+        Entry newEntry = new Entry(key, value);
+        newEntry.next = head;
+        array[index] = newEntry; // 接在头部
         size++;
         if (needRefactor()) {
             rehash();
@@ -143,12 +143,12 @@ public class MyHashMap { // 先不写generics
     }
 
     private void rehash() {
-        Node[] oldArray = array;
-        array = new Node[array.length * 2];
+        Entry[] oldArray = array;
+        array = new Entry[array.length * 2];
 
-        for (Node cur : oldArray) {
+        for (Entry cur : oldArray) {
             while (cur != null) {
-                Node next = cur.next;
+                Entry next = cur.next;
                 int index = hash(cur.key);
                 // prepend into new
                 cur.next = array[index]; // concat
