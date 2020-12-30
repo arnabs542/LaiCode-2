@@ -32,5 +32,9 @@ public class Tester {
         String input = "student";
         String t = "un";
         System.out.println(remove1.remove(input,t));
+
+        RemoveSpaces remove2 = new RemoveSpaces();
+        String input2 = "  an   apple       ";
+        System.out.println(remove2.removeSpaces(input2));
     }
 }
