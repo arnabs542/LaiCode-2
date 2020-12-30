@@ -26,5 +26,11 @@ public class Tester {
         List<Integer> res2 = common.commonII(a, b);
         System.out.println(res1.toString()); // hash map cannot assure the relative order, so it won't pass online judge, but still correct.
         System.out.println(res2.toString());
+
+        System.out.println("Char Removal");
+        RemoveCertainCharacters remove1 = new RemoveCertainCharacters();
+        String input = "student";
+        String t = "un";
+        System.out.println(remove1.remove(input,t));
     }
 }
