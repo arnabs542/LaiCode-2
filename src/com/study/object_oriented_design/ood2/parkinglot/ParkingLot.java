@@ -38,47 +38,47 @@ import java.util.List;
 // we abstract them out from parking lot
 // parking lot -- level -- parking spot
 public class ParkingLot {
-    // tips: implement code from the class without dependency
-    // i.e. write the Vehicle first, and then the ParkingSpot.
-    private final List<Level> levels;
-    private HashMap<Vehicle, ParkingSpot> vehicleToSpot = new HashMap<>();
+  // tips: implement code from the class without dependency
+  // i.e. write the Vehicle first, and then the ParkingSpot.
+  private final List<Level> levels;
+  private final HashMap<Vehicle, ParkingSpot> vehicleToSpot = new HashMap<>();
 
 
-    public ParkingLot(int numOfLevels, int numOfSpotsPerLevel) {
-        List<Level> list = new ArrayList<>(numOfLevels);
-        for (int i = 0; i < numOfLevels; i++) {
-            list.add(new Level(numOfSpotsPerLevel));
-        }
-        levels = Collections.unmodifiableList(list);
+  public ParkingLot(int numOfLevels, int numOfSpotsPerLevel) {
+    List<Level> list = new ArrayList<>(numOfLevels);
+    for (int i = 0; i < numOfLevels; i++) {
+      list.add(new Level(numOfSpotsPerLevel));
     }
+    levels = Collections.unmodifiableList(list);
+  }
 
-    public boolean hasSpot(Vehicle v) {
-        for (Level l : levels) {
-            if (l.hasSpot(v)) {
-                return true;
-            }
-        }
-        return false;
+  public boolean hasSpot(Vehicle v) {
+    for (Level l : levels) {
+      if (l.hasSpot(v)) {
+        return true;
+      }
     }
+    return false;
+  }
 
-    public boolean park(Vehicle v) {
-        for (Level l : levels) {
-            ParkingSpot ps = l.park(v);
-            if (ps != null) {
-                vehicleToSpot.put(v, ps);
-                return true;
-            }
-        }
-        return false;
+  public boolean park(Vehicle v) {
+    for (Level l : levels) {
+      ParkingSpot ps = l.park(v);
+      if (ps != null) {
+        vehicleToSpot.put(v, ps);
+        return true;
+      }
     }
+    return false;
+  }
 
-    public boolean leave(Vehicle v) {
-        ParkingSpot ps = vehicleToSpot.getOrDefault(v, null);
-        if (ps != null) {
-            vehicleToSpot.remove(v);
-            ps.leave();
-            return true;
-        }
-        return false;
+  public boolean leave(Vehicle v) {
+    ParkingSpot ps = vehicleToSpot.getOrDefault(v, null);
+    if (ps != null) {
+      vehicleToSpot.remove(v);
+      ps.leave();
+      return true;
     }
+    return false;
+  }
 }

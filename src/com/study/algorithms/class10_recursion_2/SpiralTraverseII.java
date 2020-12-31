@@ -19,44 +19,45 @@ import java.util.List;
 
 
 public class SpiralTraverseII {
-    StringBuilder sb = new StringBuilder();
-    public List<Integer> spiral(int[][] matrix) {
-        // Assumption: the matrix is not null and the two sides' length > 0
-        List<Integer> result = new ArrayList<>();
-        int offset = 0;
-        int height = matrix.length;
-        int width = matrix[0].length;
-        while(true) {
-            if (height == 0 || width == 0) {
-                return result;
-            } else if (height == 1) { // one row left
-                for (int i = 0; i < width; i++) {
-                    result.add(matrix[offset][offset + i]);
-                }
-                return result;
-            } else if (width == 1) { // one column left
-                for (int i = 0; i < height; i++) {
-                    result.add(matrix[offset + i][offset]);
-                }
-                return result;
-            }
+  StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < width - 1; i++) {
-                result.add(matrix[offset][offset + i]);
-            }
-            for (int i = 0; i < height - 1; i++) {
-                result.add(matrix[offset + i][offset + width - 1]);
-            }
-            for (int i = width - 1; i > 0; i--) {
-                result.add(matrix[offset + height - 1][offset + i]);
-            }
-            for (int i = height - 1; i > 0; i--) {
-                result.add(matrix[offset + i][offset]);
-            }
-
-            offset++;
-            width -= 2;
-            height -= 2;
+  public List<Integer> spiral(int[][] matrix) {
+    // Assumption: the matrix is not null and the two sides' length > 0
+    List<Integer> result = new ArrayList<>();
+    int offset = 0;
+    int height = matrix.length;
+    int width = matrix[0].length;
+    while (true) {
+      if (height == 0 || width == 0) {
+        return result;
+      } else if (height == 1) { // one row left
+        for (int i = 0; i < width; i++) {
+          result.add(matrix[offset][offset + i]);
         }
+        return result;
+      } else if (width == 1) { // one column left
+        for (int i = 0; i < height; i++) {
+          result.add(matrix[offset + i][offset]);
+        }
+        return result;
+      }
+
+      for (int i = 0; i < width - 1; i++) {
+        result.add(matrix[offset][offset + i]);
+      }
+      for (int i = 0; i < height - 1; i++) {
+        result.add(matrix[offset + i][offset + width - 1]);
+      }
+      for (int i = width - 1; i > 0; i--) {
+        result.add(matrix[offset + height - 1][offset + i]);
+      }
+      for (int i = height - 1; i > 0; i--) {
+        result.add(matrix[offset + i][offset]);
+      }
+
+      offset++;
+      width -= 2;
+      height -= 2;
     }
+  }
 }

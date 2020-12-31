@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.algorithms.class08_stringII;
 
 public class Tester {
 
