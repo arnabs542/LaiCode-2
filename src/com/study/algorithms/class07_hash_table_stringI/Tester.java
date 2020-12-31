@@ -36,5 +36,14 @@ public class Tester {
         RemoveSpaces remove2 = new RemoveSpaces();
         String input2 = "  an   apple       ";
         System.out.println(remove2.removeSpaces(input2));
+
+        System.out.println("Deduplicate");
+        Deduplicate dedup1 = new Deduplicate();
+        String str1 = "aabbbcc";
+        System.out.println(str1 + " -> " + dedup1.deDup(str1));
+
+        DeduplicateRepeatedly dedup2 = new DeduplicateRepeatedly();
+        System.out.println(str1 + " -> " + dedup2.deDup(str1));
+
     }
 }
