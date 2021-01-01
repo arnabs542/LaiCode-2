@@ -27,7 +27,7 @@ public class Tester {
     System.out.println(res1.toString()); // hash map cannot assure the relative order, so it won't pass online judge, but still correct.
     System.out.println(res2.toString());
 
-    System.out.println("Char Removal");
+    System.out.println("----Char Removal----");
     RemoveCertainCharacters remove1 = new RemoveCertainCharacters();
     String input = "student";
     String t = "un";
@@ -37,7 +37,7 @@ public class Tester {
     String input2 = "  an   apple       ";
     System.out.println(remove2.removeSpaces(input2));
 
-    System.out.println("Deduplicate");
+    System.out.println("----Deduplicate----");
     Deduplicate dedup1 = new Deduplicate();
     String str1 = "aabbbcc";
     System.out.println(str1 + " -> " + dedup1.deDup(str1));
@@ -45,5 +45,12 @@ public class Tester {
     DeduplicateRepeatedly dedup2 = new DeduplicateRepeatedly();
     System.out.println(str1 + " -> " + dedup2.deDup(str1));
 
+    System.out.println("----Sub-String----");
+    Strstr strstr = new Strstr();
+    String large = "遇到了一只小猫咪";
+    String small = "一只小猫咪";
+    System.out.println(strstr.strstrI(large, small));
+    System.out.println(strstr.strstrII(large, small));
+    System.out.println(strstr.strstrIII(large, small));
   }
 }
