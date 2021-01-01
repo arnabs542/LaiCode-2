@@ -31,12 +31,12 @@ public class ReverseWords {
   }
 
   private void reverse(char[] input, int left, int right) {
-    if (left >= right) {
-      return;
+    while (left < right) {
+      char temp = input[left];
+      input[left] = input[right];
+      input[right] = temp;
+      left++;
+      right--;
     }
-    char temp = input[left];
-    input[left] = input[right];
-    input[right] = temp;
-    reverse(input, left + 1, right - 1);
   }
 }
