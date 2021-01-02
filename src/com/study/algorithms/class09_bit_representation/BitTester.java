@@ -16,7 +16,10 @@ public class BitTester {
   // method 2 - (x>>k) & 1 - recommended
   // x右移k位，与1按位与，可以得知第k位是什么！
   // 不需要if else，简单明了
+  // 这一点十分重要，因为tester往往只是一个解决复杂问题的小工具，他越简单越好被组合。
   public int bitTester(int x, int k) {
     return (x >> k) & 1;
   }
+  // setter/resetter 都是移动1
+  // tester为了方便，就移动x了。主要是因为他要获得一个boolean。
 }
