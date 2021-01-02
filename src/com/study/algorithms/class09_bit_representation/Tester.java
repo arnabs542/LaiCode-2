@@ -30,5 +30,9 @@ public class Tester {
     System.out.println(mm);
 
     System.out.println(rb.reverseII(0x10101010));
+
+    HexRepresentation hr = new HexRepresentation();
+    System.out.println(hr.hex1(48));
+    System.out.println(hr.hex2(48));
   }
 }
