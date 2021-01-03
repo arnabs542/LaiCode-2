@@ -1,4 +1,4 @@
-package com.study.algorithms.class10_recursion_2;
+package com.study.algorithms.class10_recursion_2.linkedlist;
 
 import com.study.util.ListNode;
 import com.study.util.TreeNode;

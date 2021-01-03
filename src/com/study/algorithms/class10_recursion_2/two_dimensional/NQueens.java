@@ -1,4 +1,4 @@
-package com.study.algorithms.class10_recursion_2;
+package com.study.algorithms.class10_recursion_2.two_dimensional;
 
 public class NQueens {
 
