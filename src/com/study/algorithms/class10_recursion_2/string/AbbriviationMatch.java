@@ -35,33 +35,33 @@ public class AbbriviationMatch {
     char[] patternArray = pattern.toCharArray();
     return match(textArray, 0, patternArray, 0);
   }
-  private boolean match(char[] text, int it, char[] pattern, int ip) {
+  private boolean match(char[] text, int ti, char[] pattern, int pi) {
     // base case:
-    if (it == text.length && ip == pattern.length) {
+    if (ti == text.length && pi == pattern.length) {
       // return true only when both string become empty at the same time.
       return true;
-    } else if (it == text.length || ip == pattern.length) {
+    } else if (ti == text.length || pi == pattern.length) {
       // return false when one of them become empty prior to another.
       return false;
     }
 
     // recursive rule:
-    if (isLetter(pattern[ip])) {
-      if (text[it] != pattern[ip]) {
+    if (isLetter(pattern[pi])) {
+      if (text[ti] != pattern[pi]) {
         return false;
       }
-      return match(text, it + 1, pattern, ip + 1);
-    } else if (isDigit(pattern[ip])) {
+      return match(text, ti + 1, pattern, pi + 1);
+    } else if (isDigit(pattern[pi])) {
       // number可能不止1位，要考虑多位的情况：
       int number = 0;
-      while (ip < pattern.length && isDigit(pattern[ip])) {  // Error1: ip可能越界
-        number = number * 10 + (pattern[ip] - '0');
-        ip++;
+      while (pi < pattern.length && isDigit(pattern[pi])) {  // Error1: ip可能越界
+        number = number * 10 + (pattern[pi] - '0');
+        pi++;
       }
-      if (it + number > text.length) {
-        return false;                                       // Error2: it + number == text.length的情况要交给base case来处理。不能这里early return。
+      if (ti + number > text.length) {
+        return false;                                       // Error2: ti + number == text.length的情况要交给base case来处理。不能这里early return。
       }
-      return match(text, it + number, pattern, ip);
+      return match(text, ti + number, pattern, pi);
     }
     return false; // not digit or letter, invalid input;
   }
@@ -72,5 +72,31 @@ public class AbbriviationMatch {
 
   private boolean isDigit(char c) {
     return '0' <= c && c <= '9';
+  }
+
+  public boolean match_iterative(String text, String pattern) {
+    int ti = 0;
+    int pi = 0;
+    while (ti < text.length() && pi < pattern.length()) {
+      // case 1:
+      if (isLetter(pattern.charAt(pi))) {
+        if (text.charAt(ti) != pattern.charAt(pi)) {
+          return false;
+        }
+        ti++;
+        pi++;
+      } else if (isDigit(pattern.charAt(pi))) {
+        int number = 0;
+        while (pi < pattern.length() && isDigit(pattern.charAt(pi))) {
+          number = number * 10 + (pattern.charAt(pi) - '0');
+          pi++;
+        }
+        ti += number;
+      } else {
+        return false; // invalid input
+      }
+    }
+    // post processing:
+    return ti == text.length() && pi == pattern.length();
   }
 }
