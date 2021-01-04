@@ -1,8 +1,9 @@
 package com.study.algorithms.class10_recursion_2.tree;
 
 import com.study.util.TreeNode;
+// Max Path Sum From Any node to Any node
 
-public class MaxPathSum {
+public class MaxPathSumII {
   // Given a binary tree in which each node contains an integer number.
   // Find the maximum possible sum
   // from any node to any node -- the start and end can be same
@@ -27,6 +28,7 @@ public class MaxPathSum {
 
   public int maxPathSum(TreeNode root) {
     int[] globalMax = new int[1];
+    globalMax[0] = Integer.MIN_VALUE;
     maxPathSum(root, globalMax);
     return globalMax[0];
   }
@@ -38,8 +40,8 @@ public class MaxPathSum {
     }
     // recursion rule:
     // get the max single path from left / right child
-    int left = Math.max(0, maxPathSum(root.left));
-    int right = Math.max(0, maxPathSum(root.right));
+    int left = Math.max(0, maxPathSum(root.left, globalMax));
+    int right = Math.max(0, maxPathSum(root.right, globalMax));
     // compute the maxSumPath of current layer
     globalMax[0] = Math.max((left + right + root.key), globalMax[0]);
     // return the max single path from root

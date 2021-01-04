@@ -5,6 +5,7 @@ import com.study.util.TreeNode;
 public class MaxDiffNodes {
   public int maxDiffNodes(TreeNode root) {
     int[] globalMax = new int[1];
+    globalMax[0] = Integer.MIN_VALUE;
     maxDiffNodes(root, globalMax);
     return globalMax[0];
   }
