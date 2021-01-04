@@ -38,20 +38,12 @@ public class LCA {
       return root;
     }
     // recursion rule:
-    TreeNode leftCandidate = lowestCommonAncestor(root.left, one, two);
-    TreeNode rightCandidate = lowestCommonAncestor(root.right, one, two);
-    // case 1
-    if (leftCandidate == null && rightCandidate == null) {
-      return null;
-    }
-    // case 2
-    if (leftCandidate == null || rightCandidate == null) {
-      return leftCandidate == null ? rightCandidate : leftCandidate;
-    }
-    // case 3
-    if (leftCandidate != null && rightCandidate != null) {
+    TreeNode left = lowestCommonAncestor(root.left, one, two);
+    TreeNode right = lowestCommonAncestor(root.right, one, two);
+    // 情况3
+    if (left != null && right != null) {
       return root;
     }
-    return null;
+    return left == null ? right : left; // 囊括1.2 两种情况
   }
 }
