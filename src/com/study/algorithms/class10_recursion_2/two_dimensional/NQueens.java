@@ -28,36 +28,50 @@ public class NQueens {
   // 1. get(index)  获取index对应的object，下标从0开始
   // 2. size()      不是length()
   // 3. remove(index / object)  用于删除，不是delete。  我们这里add的时候当object放，但是remove的时候要写index
-  public List<List<Integer>> nqueens(int n) {
-    List<List<Integer>> result = new ArrayList<>();
-    List<Integer> cur = new ArrayList<>(); // store one way
+
+  /*********************************************************************************************/
+
+
+  // assumption: n > 0
+  //             n queens put on n*n checkerboard
+  // input: # of queens
+  // ouput: a list of solution, each solution is a list of size n
+  // in this list, index is the row and the it's value is the position(col) in that row.
+
+  public List<List<Integer>> nQueens(int n) {
+    List<List<Integer>> result = new ArrayList<>(n);
+    List<Integer> cur = new ArrayList<>(n);
     helper(n, cur, result);
     return result;
   }
 
   private void helper(int n, List<Integer> cur, List<List<Integer>> result) {
-    // base case: all rows are filled
-    if (cur.size() == n) {      // 注意：cur.size()就是当前的row，没必要再写一个row。
-      //result.add(cur);    // 注意：应该添加一个新的object，而不是添加一个reference就完事了
-      result.add(new ArrayList<Integer>(cur));
+    // base case: all queens have been put on checkboard
+    if (n == cur.size()) {
+      result.add(new ArrayList<>(cur)); // a new object
       return;
     }
-    // recursion rule: try each position of current row
-    // 吃了要吐
-    for (int col = 0; col < n; col++) {
-      if (valid(cur, col)) {
+    // recursion rule: try each possible position of current row
+    for (int col = 0; col < cur.size(); col++) {
+      if (valid(col, cur)) {
+        // try one position
         cur.add(col);
         helper(n, cur, result);
-        cur.remove(cur.size() - 1); // 注意：remove 可以选择object或者index。我们这里是int，只能是选index。
+        // after try it, remove it so as not to influence the next loop.
+        cur.remove(cur.size() - 1);
       }
     }
   }
 
-  private boolean valid(List<Integer> cur, int col) {
+  private boolean valid(int col, List<Integer> cur) {
+    // row is the size of cur
     int row = cur.size();
+    // this queen's position is (col, row)
+    // one of previous queen's is (x, y)
     for (int y = 0; y < cur.size(); y++) {
       int x = cur.get(y);
-      if ((Math.abs(col - x) == (row - y)) || (col == x)) {
+      if (Math.abs(x - col) == (row - y) || x == col) {
+        // diagonal || same column --> cannot be same row, we make sure it
         return false;
       }
     }
