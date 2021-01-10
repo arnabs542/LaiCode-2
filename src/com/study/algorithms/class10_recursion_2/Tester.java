@@ -36,7 +36,7 @@ public class Tester {
     System.out.println(max);
 
     NQueens nQueens = new NQueens();
-    List<List<Integer>> solution= nQueens.nqueens(8);
+    List<List<Integer>> solution= nQueens.nQueens(8);
     System.out.println(solution);
     System.out.println(solution.size());
   }
