@@ -19,7 +19,6 @@ public class StringReplace {
     return replaceLonger(array, source, target);
   }
 
-
   private String replaceShorter(char[] array, String source, String target) {
     int writer = 0; // next place to write
     int reader = 0; // the element to read
