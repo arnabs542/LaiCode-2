@@ -3,7 +3,7 @@ package com.study.algorithms.class10_recursion_2.tree;
 import com.study.util.TreeNode;
 // Max Path Sum From Any node to Any node
 
-public class MaxPathSumII {
+public class MaxPathSumAnyToAny {
   // Given a binary tree in which each node contains an integer number.
   // Find the maximum possible sum
   // from any node to any node -- the start and end can be same

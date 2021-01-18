@@ -1,4 +1,4 @@
-package com.study.algorithms.class06_heap;
+package com.study.algorithms.class06_heap_priority_queue;
 
 /*
  *    1  3  5

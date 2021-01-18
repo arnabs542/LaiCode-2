@@ -2,7 +2,7 @@ package com.study.algorithms.class10_recursion_2.tree;
 import com.study.util.TreeNode;
 // Max Path Sum From Leaf To Root
 
-public class MaxPathSumI {
+public class MaxPathSumLeafToRoot {
   public int maxPathSumLeafToRoot(TreeNode root) {
     // base case:
     // 之前情况下（直接max）：如果左孩子是null，右孩子是-100.那么会认为leaf到当前最大是0，而不是-100了。
