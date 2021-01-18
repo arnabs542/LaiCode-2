@@ -1,5 +1,7 @@
 package com.study.algorithms.class18_cross_training_1.oneD;
 
+import java.util.Arrays;
+
 public class DeduplicateNotRepeatedly {
   // 1 2 2 2 1 3 --> 1 1 3
   // 不再是 3, 也不是 1 2 1 3
@@ -23,4 +25,29 @@ public class DeduplicateNotRepeatedly {
   //   a[f...f'] is a segment:
   //          case1: if f'-f == 1, copy, f = f'
   //          case2: else        , ignore, f = f'
+  public int[] dedup(int[] array) {
+    if (array == null) {
+      return array;
+    }
+
+    int r = 0; // 要从头开始！不能跳过！每个segment都要处理到
+    int w = 0;
+    while (r < array.length) {
+      // probing
+      int r2 = r;
+      while (r2 < array.length && array[r2] == array[r]) {
+        r2++;
+      }
+      // executing based on probed result
+      if (r2 - r == 1) {
+        // copy and move
+        array[w] = array[r];
+        r = r2;
+        w++;
+      } else {
+        r = r2;
+      }
+    }
+    return Arrays.copyOf(array, w);
+  }
 }

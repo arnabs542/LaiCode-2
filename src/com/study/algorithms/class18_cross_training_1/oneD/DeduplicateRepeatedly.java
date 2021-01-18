@@ -1,6 +1,7 @@
 package com.study.algorithms.class18_cross_training_1.oneD;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class DeduplicateRepeatedly {
@@ -25,7 +26,7 @@ public class DeduplicateRepeatedly {
    * */
   //
 
-  public String deDup(String input) {
+  public String deDup_intuitive(String input) {
     // corner case
     if (input == null || input.length() == 0) {
       return input;
@@ -71,7 +72,39 @@ public class DeduplicateRepeatedly {
   // Case 2:  if a[r] == a[w - 1], then （keep f++ unitl a[r] != a[w - 1]）
   //                                      r++到一个依然在范围内且不等于的情况。
   //                               then w--.               <-- 模拟出栈！
-  
 
+  public int[] dedup(int[] array) {
+    // r & w: notice the w-1 is the last processed elements (the top of a stack)
+    // pop: w--
+    // get top: array[w-1]
 
+    // assumption:
+    // input array
+    // output: array 这次不能是new length，因为是unsorted的。
+
+    // for each step:
+    // case 1: a[r] == a[w-1], r++ until a[r] != a[w-1], w--.
+    // case 2: else,           copy, move.
+
+    // corner case:
+    if (array == null || array.length <= 1) {
+      return array;
+    }
+
+    int r = 0;
+    int w = 0;
+    while (r < array.length) {
+      if (w - 1 >= 0 && array[r] == array[w - 1]) {
+        // r++ until a[r] != a[w-1] (!NOTICE! 不能越界)
+        while (r < array.length && array[r] == array[w - 1]) {
+          r++;
+        }
+        w--; // pop top elements
+      } else {
+        // copy and move
+        array[w++] = array[r++];
+      }
+    }
+    return Arrays.copyOf(array, w);
+  }
 }
