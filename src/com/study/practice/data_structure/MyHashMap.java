@@ -102,7 +102,7 @@ public class MyHashMap { // 先不写generics
     }
     // 2. return index, notice: hashCode may be negative
     // 最高位是0，与一下
-    return key.hashCode() & 0x7FFFFFFF % array.length;
+    return key.hashCode() & 0x7FFFFFFF % array.length; // 也可以 key.hashCode & (array.length - 1)
   }
 
 
@@ -158,3 +158,4 @@ public class MyHashMap { // 先不写generics
     }
   }
 }
+

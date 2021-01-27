@@ -29,5 +29,11 @@ public class Tester {
     int value = map.get("10");
     int prev = map.put("10", 100);
     System.out.println("value " + value + " prev " + prev);
+
   }
+
+
+
+
+
 }
