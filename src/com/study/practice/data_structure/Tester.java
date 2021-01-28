@@ -30,10 +30,13 @@ public class Tester {
     int prev = map.put("10", 100);
     System.out.println("value " + value + " prev " + prev);
 
+
+
+    // Test Circular Queue
+    MyCircularQueue queue = new MyCircularQueue(1);
+    System.out.println(queue.isEmpty());
+    System.out.println(queue.enQueue(1));
+    System.out.println(queue.deQueue());
+    System.out.println(queue.isEmpty());
   }
-
-
-
-
-
 }
