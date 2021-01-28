@@ -13,11 +13,11 @@ public class DeadlockDemo{
       System.out.format("%s向%s鞠躬%n",this.name,receiver.getName());
       receiver.bowBack(this);
     }
-    public synchronized void bowBack(Friend receiver){ // 这里只要不是synchronized，就可以不死锁了。
+    public synchronized void bowBack(Friend receiver){
       System.out.format("%s向%s鞠躬回敬%n",this.name,receiver.getName());
     }
   }
-  public static void main(String[] args){
+  public static void main(String[] args) throws InterruptedException {
     final Friend zhang = new Friend("张财主");
     final Friend li = new Friend("李财主");
     new Thread(new Runnable(){
@@ -25,6 +25,7 @@ public class DeadlockDemo{
         zhang.bow(li);
       }
     }).start();
+    Thread.sleep(10);
     new Thread(new Runnable(){
       public void run(){
         li.bow(zhang);
