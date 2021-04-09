@@ -69,7 +69,7 @@ public class DeduplicateRepeatedly {
   // Initialize: f = 0, s = 0
   // For each step:
   // Case 1:  if a[r] != a[w - 1], then a[w] = a[r], 都++  <-- 模拟和top比较。
-  // Case 2:  if a[r] == a[w - 1], then （keep f++ unitl a[r] != a[w - 1]）
+  // Case 2:  if a[r] == a[w - 1], then （keep f++ until a[r] != a[w - 1]）
   //                                      r++到一个依然在范围内且不等于的情况。
   //                               then w--.               <-- 模拟出栈！
 
@@ -107,4 +107,15 @@ public class DeduplicateRepeatedly {
     }
     return Arrays.copyOf(array, w);
   }
+
+
+  // get top --> array[w-1]
+  // pop --> w--
+  // 前提：w >= 1,     如果w是0，那么应该无脑copy and move forward（即入栈）
+
+  // 逻辑是：如果栈顶有元素，就比较，并进行去重复（跳过所有重复，栈顶元素pop）。如果没有就复制。
+
+  // w是即将插入的地方，r是读取的位置。
+  // 什么叫“重复”，w和r地方的值一样。
+  // 重复需要的行为：pop和move r
 }
