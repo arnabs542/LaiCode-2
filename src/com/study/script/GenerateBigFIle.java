@@ -8,9 +8,9 @@ public class GenerateBigFIle {
     public static void main(String[] args) throws IOException{
         FileWriter out = null;
         try {
-            out = new FileWriter("30GB.txt");
+            out = new FileWriter("5GB.txt");
             String str = "a part of a large file. very good.";
-            for (int i = 0; i < 1073741824; i++) {
+            for (int i = 0; i < 150956971; i++) {
                 out.write(str);
             }
         } finally {
