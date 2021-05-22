@@ -24,3 +24,4 @@ public class UserArrays {
         System.out.println(Arrays.toString(array)); // 原地修改
     }
 }
+// Test
