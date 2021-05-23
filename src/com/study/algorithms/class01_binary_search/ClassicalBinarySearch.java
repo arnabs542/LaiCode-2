@@ -6,7 +6,7 @@ public class ClassicalBinarySearch {
   // 注意：循环的原理：不能陷入死循环（测试1、2个元素）
 
   // 找target
-  public int binarySearch(int[] array, int target) {
+  public int binarySearch1(int[] array, int target) {
     // corner case:
     if (array == null || array.length == 0) {
       return -1;
@@ -21,6 +21,27 @@ public class ClassicalBinarySearch {
         left = mid + 1;
       } else {
         right = mid - 1;
+      }
+    }
+    return -1;
+  }
+
+
+  public int binarySearch(int[] array, int target) {
+    // corner case:
+    if (array == null) {
+      return -1;
+    }
+    int left = 0;
+    int right = array.length - 1;
+    while (left <= right) {
+      int mid = left + (right - left) / 2;
+      if (array[mid] == target) {
+        return mid;
+      } else if (array[mid] > target) {
+        right = mid - 1;
+      } else {
+        left = mid + 1;
       }
     }
     return -1;
