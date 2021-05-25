@@ -1,6 +1,8 @@
 package com.study.algorithms.class07_Heap_and_Graph_Search;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class KthSmallestInSortedMatrix {
   static class Cell {
@@ -20,7 +22,7 @@ public class KthSmallestInSortedMatrix {
    * 1. a valid matrix: matrix is not null, N * M where N > 0 and M > 0
    * 2. a valid k: k > 0 and k <= N * M
    */
-  public int kthSmallest(int[][] matrix, int k) {
+  public int kthSmallest1(int[][] matrix, int k) {
     int rows = matrix.length;
     int columns = matrix[0].length;
     // Best First Search, need a minHeap on the value of each cells.
@@ -56,4 +58,35 @@ public class KthSmallestInSortedMatrix {
   }
   // time: O(klogk), 因为一次最多add 2个node，一共add k次，所以heap最大也就是2k个。
   // space: O(mn + k), where m is the row of matrix, n is the column of matrix.
+
+
+  // 重听时重新写的一遍：
+  public int kthSmallest(int[][] matrix, int k) {
+  /*Assumptions
+      the matrix is not null, N > 0 and M > 0
+      K > 0 and K <= N * M
+  Examples  -- each row and col are sorted in ascending order.
+    { {1,  3,   5,  7},
+      {2,  4,   8,  9},
+      {3,  5,  11, 15},
+      {6,  8,  13, 18} }
+
+    the 5th smallest number is 4
+    the 8th smallest number is 6*/
+
+    if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0 || k <= 0) {
+      System.out.println("Invalid param");
+      return -1; // 假设matrix非负，-1不可能是一个value。
+    }
+
+    int rows = matrix.length;
+    int cols = matrix[0].length;
+    Queue<Cell> minHeap = new PriorityQueue<>(new Comparator<Cell>() { // 这个() 是call constructor
+      @Override
+      public int compare(Cell o1, Cell o2) {
+        return o1.value < o2.value ? -1 : 1;
+      }
+    });
+    return 0;
+  }
 }
