@@ -1,4 +1,4 @@
-package com.study.algorithms.class07_Heap;
+package com.study.algorithms.class07_Heap_and_Graph_Search;
 
 public class Tester {
 

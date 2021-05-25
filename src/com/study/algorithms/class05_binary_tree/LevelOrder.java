@@ -1,4 +1,4 @@
-package com.study.algorithms.class07_BFS;
+package com.study.algorithms.class05_binary_tree;
 
 import com.study.util.TreeNode;
 
