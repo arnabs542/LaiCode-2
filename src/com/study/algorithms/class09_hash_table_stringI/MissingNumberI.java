@@ -1,4 +1,4 @@
-package com.study.algorithms.class000_hash_table_stringI;
+package com.study.algorithms.class09_hash_table_stringI;
 
 // Given an integer array of size N-1, containing al the numbers from 1 to N except one,
 // find the missing number:

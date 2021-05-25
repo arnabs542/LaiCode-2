@@ -1,4 +1,4 @@
-package com.study.algorithms.class07_DFS;
+package com.study.algorithms.class08_DFS;
 
 class TestCases {
   public void testPermutationsI() {

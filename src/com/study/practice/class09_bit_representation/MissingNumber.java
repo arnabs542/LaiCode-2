@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.practice.class09_bit_representation;
 
 public class MissingNumber {
   // Method 1: XOR

@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.practice.class09_bit_representation;
 
 public class BitSetter {
   // Given a number x, set x's k-th bit to 1

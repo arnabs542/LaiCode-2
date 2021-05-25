@@ -1,4 +1,4 @@
-package com.study.algorithms.class07_DFS;
+package com.study.algorithms.class08_DFS;
 
 public class Tester {
   public static void main(String[] args) {

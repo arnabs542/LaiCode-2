@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.practice.class09_bit_representation;
 
 public class BitResetter {
   // 与setter相反，设置第k位为0，而不是1.

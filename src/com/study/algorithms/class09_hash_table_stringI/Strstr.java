@@ -1,4 +1,4 @@
-package com.study.algorithms.class000_hash_table_stringI;
+package com.study.algorithms.class09_hash_table_stringI;
 
 public class Strstr {
   // Determine if a small string is a substring of another large string

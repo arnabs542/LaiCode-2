@@ -1,4 +1,4 @@
-package com.study.algorithms.class000_hash_table_stringI;
+package com.study.algorithms.class09_hash_table_stringI;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

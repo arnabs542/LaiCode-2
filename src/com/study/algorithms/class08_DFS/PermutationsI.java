@@ -1,4 +1,4 @@
-package com.study.algorithms.class07_DFS;
+package com.study.algorithms.class08_DFS;
 
 import java.util.ArrayList;
 import java.util.List;

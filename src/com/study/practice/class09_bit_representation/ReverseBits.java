@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.practice.class09_bit_representation;
 
 // Reverse bits of a 32-bit integer.
 public class ReverseBits {

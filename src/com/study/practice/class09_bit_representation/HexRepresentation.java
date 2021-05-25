@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.practice.class09_bit_representation;
 
 // Generate the hexadecimal representation for a given non-negative integer number as a string.
 // The hex representation should start with "0x".

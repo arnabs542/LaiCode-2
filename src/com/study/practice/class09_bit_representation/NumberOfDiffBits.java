@@ -1,4 +1,4 @@
-package com.study.algorithms.class09_bit_representation;
+package com.study.practice.class09_bit_representation;
 
 // Determine the number of bits that are different for two given integers.
 // Examples:   5(“0101”) and 8(“1000”) has 3 different bits
