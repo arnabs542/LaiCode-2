@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Tester {
     public static void main(String args[]) {
-        KSmallest_MaxHeap kSmallest_maxHeap = new KSmallest_MaxHeap();
-        int[] array = new int[]{5,3,4,2,1,1,2,1,8,4,4,9,13,5,8};
-        System.out.println(Arrays.toString(kSmallest_maxHeap.kSmallest(array, 5)));
+        KSmallest_QuickSelect kSmallest = new KSmallest_QuickSelect();
+        int[] array = new int[]{1,2,3,4};
+        System.out.println(Arrays.toString(kSmallest.kSmallest(array, 2)));
     }
 }
