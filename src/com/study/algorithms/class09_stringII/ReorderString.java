@@ -1,4 +1,4 @@
-package com.study.algorithms.class08_stringII;
+package com.study.algorithms.class09_stringII;
 
 public class ReorderString {
   // 逆过程，以前有一个mergeSort思路的 abc123 -> a1b2c3

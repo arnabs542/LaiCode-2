@@ -1,4 +1,4 @@
-package com.study.algorithms.class08_stringII;
+package com.study.algorithms.class09_stringII;
 
 public class ReverseString {
   // apple --> elppa

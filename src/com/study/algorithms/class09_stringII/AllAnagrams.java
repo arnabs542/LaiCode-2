@@ -1,4 +1,4 @@
-package com.study.algorithms.class08_stringII;
+package com.study.algorithms.class09_stringII;
 
 //        Find All Anagrams Of Short String In A Long String
 //        Find all occurrence of anagrams of a given string s in a given string l. Return the list of starting

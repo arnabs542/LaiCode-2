@@ -1,4 +1,4 @@
-package com.study.algorithms.class08_stringII;
+package com.study.algorithms.class09_stringII;
 
 public class RunLengthCoding {
   // Given a string, replace adjacent, repeated characters with the character followed by the number of repeated occurrences.
