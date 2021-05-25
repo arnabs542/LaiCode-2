@@ -4,7 +4,7 @@ import com.study.util.TreeNode;
 
 import java.util.*;
 
-public class Get_Keys_In_Binary_Tree_Layer_By_Layer {
+public class GetKeysInBinaryTreeLayerByLayer {
     public List<List<Integer>> layerByLayer(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
         // corner case:

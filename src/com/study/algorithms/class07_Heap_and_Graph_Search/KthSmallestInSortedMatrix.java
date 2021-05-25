@@ -54,4 +54,6 @@ public class KthSmallestInSortedMatrix {
     }
     return minHeap.peek().value;
   }
+  // time: O(klogk), 因为一次最多add 2个node，一共add k次，所以heap最大也就是2k个。
+  // space: O(mn + k), where m is the row of matrix, n is the column of matrix.
 }
