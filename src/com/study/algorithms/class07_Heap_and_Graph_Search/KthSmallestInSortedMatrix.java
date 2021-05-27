@@ -105,5 +105,6 @@ public class KthSmallestInSortedMatrix {
         visited[cell.row][cell.column + 1] = true;
       }
     }
+    return 0;
   }
 }

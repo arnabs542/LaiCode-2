@@ -25,7 +25,7 @@ public class SubSetsI {
   // to be picked or not
   private void helper(char[] input, int index, StringBuilder prefix, List<String> result) {
     // base case:
-    // after deciding pick or not each character
+    // after deciding pick or not [each character]
     // we have a complete subset
     if (index == input.length) {
       result.add(prefix.toString());

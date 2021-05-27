@@ -63,6 +63,6 @@ public class PermutationsI {
   }
   // complexity:
   // the last two levels of the tree dominate the overall cost:
-  // so the time complexity is O(n!) where n is the number of letters in the string
-  // the space complexity is O(n!*n + n) = O(n!)
+  //  time: O(n!) --> dominant facter
+  //  space: O(n)
 }
