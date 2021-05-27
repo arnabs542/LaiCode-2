@@ -1,8 +1,6 @@
 package com.study.algorithms.class07_Heap_and_Graph_Search;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class KthSmallestInSortedMatrix {
   static class Cell {
@@ -87,6 +85,25 @@ public class KthSmallestInSortedMatrix {
         return o1.value < o2.value ? -1 : 1;
       }
     });
-    return 0;
+    boolean[][] visited = new boolean[rows][cols];
+    minHeap.offer(new Cell(0,0,matrix[0][0]));
+    visited[0][0] = true;
+    while (!minHeap.isEmpty()) {
+      // expand
+      Cell cell = minHeap.poll();
+      k--;
+      if (k == 0) {
+        return cell.value;
+      }
+      // generate
+      if (cell.row + 1 < rows && !visited[cell.row + 1][cell.column]) {
+        minHeap.offer(new Cell(cell.row + 1, cell.column, cell.value + matrix[cell.row + 1][cell.column]));
+        visited[cell.row + 1][cell.column] = true;
+      }
+      if (cell.column + 1 < cols && !visited[cell.row + 1][cell.column]) {
+        minHeap.offer(new Cell(cell.row, cell.column + 1, cell.value + matrix[cell.row][cell.column + 1]));
+        visited[cell.row][cell.column + 1] = true;
+      }
+    }
   }
 }
