@@ -40,7 +40,7 @@ public class AllPermutations {
             return;
         }
 
-        for (int j = index + 1; j < array.length; j++) {
+        for (int j = index; j < array.length; j++) {
             // 从理论上，j可以从index+1开始，
             // 但是那样会漏掉一个分支，即不交换的那个分支。
             // 同时，还会在最后一层（只剩下一个元素可选）漏掉递归调用的base case，产出[]（如果其他逻辑不变）
