@@ -65,5 +65,21 @@ public class NewMinHeap {
     // 用percolateUp + offer，那么最贵的操作是leaf nodes，即最多的那一侧。
     // --------------------------------------------------------------------
 
+    // Java没有update，但是可以提供update （Java觉得一个Queue不应该update）
+    // --> udpate了以后，要判断percolateDown还是percolateUp --> 和源元素比：
+    //  1. 比原元素大，那么优先级变小了，percolateDown
+    //  2. 比原元素小，那么percolateUp
+    // 二选一
 
+    // Key Point:
+    // 1. percolateUp:
+    //      offer
+    //      update, and smaller
+    //
+    // 2. percolateDown:
+    //      poll
+    //      heapify
+    //      update, and bigger
+
+    //
 }
