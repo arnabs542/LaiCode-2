@@ -79,6 +79,9 @@ package com.study.practice.class10_implementing_heaps;
 //      heapify
 //      update, and bigger
 
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+
 public class NewMinHeap {
 
     private int[] array;
@@ -104,7 +107,7 @@ public class NewMinHeap {
     private void heapify() {
         // percolateDown from the parent of last leaf node
         // 从右向左，从下向上，对非叶子做percolateDown
-        for (int i = size / 2 - 1; i >= 0; i++) {
+        for (int i = (size - 1) / 2; i >= 0; i--) {
             percolateDown(i);
         }
     }
@@ -124,45 +127,82 @@ public class NewMinHeap {
     private void percolateUp(int index) { // 对index，进行percolateUp。index是太子当前的位置
         // sanity check
         if (index < 0 || index > size - 1) {
-            throw new IllegalArgumentException("illegal index in percolateUp");
+            throw new ArrayIndexOutOfBoundsException("invalid index range");
         }
         int parentIndex = (index - 1) / 2;
         while (parentIndex >= 0 && array[parentIndex] > array[index]) {
             swap(parentIndex, index);
             index = parentIndex;
+            parentIndex = (index - 1) / 2;
         }
     }
 
     private void percolateDown(int index) { // index是当前幼帝的位置
         // sanity check
         if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("illegal index in percolateDown");
+            throw new ArrayIndexOutOfBoundsException("invalid index range");
         }
         int leftIndex = index * 2 + 1;
         int rightIndex = index * 2 + 2;
-        while (leftIndex < size - 1) {
+        while (leftIndex <= size - 1) {
             int smallIndex = leftIndex;
-            if (rightIndex < size - 1) {
-                smallIndex = array[leftIndex] < array[rightIndex] ? leftIndex : rightIndex;
+            if (rightIndex <= size - 1 && array[rightIndex] < array[leftIndex]) {
+                smallIndex =  rightIndex;
             }
 
             if (array[smallIndex] < array[index]) {
                 swap(smallIndex, index);
+            } else {
+                break;
             }
             index = smallIndex;
+            leftIndex = index * 2 + 1;
+            rightIndex = index * 2 + 2;
         }
     }
 
     public int peek() {
+        if (size == 0) {
+            throw new NoSuchElementException("no element");
+        }
+        return array[0];
     }
 
     public int poll() {
+        if (size == 0) {
+            throw new NoSuchElementException("no element");
+        }
+        int result = array[0];
+        array[0] = array[size - 1];
+        size--;
+        percolateDown(0);
+        return result;
     }
 
     public void offer(int ele) {
+        // 可能会resize
+        if (size == array.length - 1) {
+            // 这个copyOf，可以用于trim，也可以增长。
+            Arrays.copyOf(array, array.length * 2);
+        }
+        array[size] = ele;
+        size++; // 写在前面比较好，调整到合法的状态。
+        percolateUp(size - 1); // 注意，index必须是新加的元素
     }
 
     public int update(int index, int ele) {
+        // sanity check:
+        if (index < 0 || index > size - 1) {
+            throw new ArrayIndexOutOfBoundsException("invalid index range");
+        }
+        int val = array[index];
+        array[index] = ele;
+        if (val < ele) {
+            percolateDown(index);
+        } else {
+            percolateUp(index);
+        }
+        return val;
     }
 
     private void swap(int l, int r) {
