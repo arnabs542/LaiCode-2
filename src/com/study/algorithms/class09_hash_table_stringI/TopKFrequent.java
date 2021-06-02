@@ -34,10 +34,10 @@ public class TopKFrequent {
     });
     for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
       if (minHeap.size() < k) { // k=2时，size=1可以进入，size=2不可以进入
-        minHeap.add(entry);
+        minHeap.offer(entry);
       } else if (entry.getValue() > minHeap.peek().getValue()) {
         minHeap.poll();
-        minHeap.add(entry);
+        minHeap.offer(entry);
       }
     }
     return HeapToArray(minHeap);

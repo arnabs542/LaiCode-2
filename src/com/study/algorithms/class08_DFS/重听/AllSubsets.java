@@ -30,15 +30,13 @@ public class AllSubsets {
         return result;
     }
 
+
     private void helper(String set, int index, StringBuilder prefix, List<String> result) {
-        // leaf: index == 3 (out of bound)
-        // after deciding pick or not pick each char, we get one complete subset.
-        if (index == set.length()) {
+        if (index == set.length()) { // 没有再可以尝试的字母了
             result.add(prefix.toString());
-            return;
+            return; // base case 一定要return
         }
 
-        // this level:
         prefix.append(set.charAt(index));
         helper(set, index + 1, prefix, result); // case 1: pick the char at index
         prefix.deleteCharAt(prefix.length() - 1);
