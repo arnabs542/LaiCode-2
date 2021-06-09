@@ -19,7 +19,7 @@ public class SpiralTraverse {
     {7,  8,  9},
      */
 
-  //    1.没能正确判断base case。 --  偶数length==0；奇数length==1
+//    1.没能正确判断base case。 --  偶数length==0；奇数length==1
 //    2.通过for循环循环变量反向，降低题目的难度。
   private void recursiveTraverse(int[][] matrix, int offset, int length, List result) {
     // base case
