@@ -15,6 +15,6 @@ public class AbbMatch {
     // 每次pattern先走，然后看如果是letter，就走1个input，并检查是否相同
     // 如果是num，就记录完这个num，停在num后方的letter。input走num个位置，走到letter上检查是否相等。
     public boolean match(String input, String pattern) {
-
+        return false;
     }
 }
